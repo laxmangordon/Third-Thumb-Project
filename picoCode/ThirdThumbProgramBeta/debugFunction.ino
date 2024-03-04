@@ -4,13 +4,17 @@ void debugStart(){
   if (Serial.available() > 0) {
     if ((int)Serial.read() == 57) {
       debugMenu = true;
+      Serial.println("");
       Serial.println(">0: Test openCloseServo");
       Serial.println(">1: Test tiltServo");
+      Serial.println(">2: Show tiltServoSensor output values");
+      Serial.println(">3: Show openCloseServoSensor output values");
       Serial.println("");
       Serial.println(">Type \'9\' at any time to open this menu again");
       debugMenuFunction();
     }
   }
+  resetServoPos();
 }
 
 void debugMenuFunction() {
@@ -67,7 +71,7 @@ void debugMenuFunction() {
         
         case 50:    //number 2
           while (true){
-            Serial.println(analogRead(26));
+            Serial.println(analogRead(tiltServoECGSensorPin));
 
             if (Serial.available() > 0){
               if(((int)Serial.read() == 99) || ((int)Serial.read() == 67)){ //99 = c 67 = C
@@ -80,7 +84,7 @@ void debugMenuFunction() {
 
         case 51:    //number 3
           while (true){
-            Serial.println(analogRead(27));
+            Serial.println(analogRead(openCloseServoECGSensorPin));
 
             if (Serial.available() > 0){
               if(((int)Serial.read() == 99) || ((int)Serial.read() == 67)){ //99 = c 67 = C

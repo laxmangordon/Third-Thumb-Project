@@ -1,8 +1,8 @@
 #include "mainH.h"
 
 void setup() {
-  tiltServo.attach(tiltServoECGSensorPin, 400, 2600);
-  openCloseServo.attach(openCloseServoECGSensorPin, 400, 2600);
+  tiltServo.attach(tiltServoPin, 1000, 2000);
+  openCloseServo.attach(openCloseServoPin, 1000, 2000);
 
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, LOW);
@@ -13,4 +13,5 @@ void setup() {
 void loop() {
   debugStart();
   writeServos();
+  resetServoPos();
 }
