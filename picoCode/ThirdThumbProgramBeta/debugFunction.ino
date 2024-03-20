@@ -1,5 +1,7 @@
 #include "mainH.h"
 
+//starts the debugStart() function
+//This function runs the debugging part of the code. This allows the testing of the servos and the reading of the EMG/ECG sensor outputs.
 void debugStart(){
   if (Serial.available() > 0) {
     if ((int)Serial.read() == 57) {
@@ -17,6 +19,7 @@ void debugStart(){
   resetServoPos();
 }
 
+//This function starts the loop of the debugging code.
 void debugMenuFunction() {
   while (true) {
     while (Serial.available() > 0) {

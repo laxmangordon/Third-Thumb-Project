@@ -1,5 +1,7 @@
 #include "mainH.h"
 
+//This function sets the state of the onboard led microcontroller led
+//0 = off, 1 = on, 9 = forever blink in half second intervals
 void setLED(int state){
   if (ledState != state){
     switch (state){
@@ -21,6 +23,7 @@ void setLED(int state){
   }
 }
 
+//This function resets the position of the servos to their mid position.
 void resetServoPos(){
   if (digitalRead(resetPosButton) == HIGH){
     int tiltServoPosMiddle = (tiltServoPosMaximum + tiltServoPosMinimum) / 2;

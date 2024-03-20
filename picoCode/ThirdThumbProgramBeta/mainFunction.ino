@@ -1,6 +1,11 @@
 #include "mainH.h"
 
+//define the writeServo() function
+//The way that this function works is that it checks if the output of the EMG/ECG sensors have reached a threshold written below. If this is done, it will move the
+//corresponding servo in one direction. This then triggers a latch and the next time the threshold is reached, the servo will move in the opposit direction. This 
+//loops forever.
 void writeServos(){
+  //starts checking the tilt sensor and servo
   if(analogRead(tiltServoECGSensorPin) >= 700){
     while((analogRead(tiltServoECGSensorPin) >= 700) && bounceVeriable1 == false){
       if(tiltServoPos < tiltServoPosMaximum){
@@ -27,6 +32,8 @@ void writeServos(){
       }
     }
   }
+
+  //starts checking the open and close sensor and servo
   if(analogRead(openCloseServoECGSensorPin) >= 700){
     while((analogRead(openCloseServoECGSensorPin) >= 700) && bounceVeriable2 == false){
       if(openCloseServoPos < openCloseServoPosMaximum){
